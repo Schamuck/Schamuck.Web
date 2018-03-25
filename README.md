@@ -1,38 +1,28 @@
-# Schamuck.Web Documentations
+# Schamuck.Web 
 
 The documention will describe the project set up components which help to understand the project structure. 
 
 ## Development Environment
 
 [Visual Studio Code](https://code.visualstudio.com).
-[Sublime Text](https://code.visualstudio.com).
 
 ## Project Directories
+* *app* Application
+* *extlib* CDN library copies
+* *Library* Internal JavaScript libraries
 
-* *img*\*: Images for the project
-* *lib*\*: 3rd party JavaScript libraries
-* *node_modules*: Types/Modules/npm packages updated by package manager. npm install.
-* *out*: Keeps Compiled js outputs and copies (from src) of any other dependent web files. 
-* *src*\*: Source of Typescript codes.
-* *tslintmadeuprules*: Custom rules for tslint
-* *typings*: The TypeScript type definitions
-
-
-The **Schamuck.Web** directory contains the following files:
+## Project Files 
 
 * *gulpfile.js*: A JavaScript file containing tasks for the build process automation.
-* *package.json*: The nodejs package file.
-* *README.md_*: File containing this documentation
-* *tsconfig.json*: The TypeScript compiler configuration file.
-This file contains compiler options and the list of TypeScript files that aret to be compiled into JavaScript during the build process.
-* *tslint.json*: tslint Rule Definition
+* *package.json*: The nodejs package file for npm install.
+* *tsconfig.json*: TypeScript compile config.
 
 ## npm installaitons 
 1. node.js + npm
 2. TypeScript 
 3. Gulp 
-Browser-Sync 
-Git
-Git-Branch
+4. Browser-Sync 
+5. Git
+6. git-rev
 
    

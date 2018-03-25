@@ -4,6 +4,8 @@ export class script
 {
    constructor() 
    {
+
+    
       let root =  document.getElementById("root");
       let table = document.createElement("table");
 

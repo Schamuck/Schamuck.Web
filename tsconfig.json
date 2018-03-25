@@ -4,7 +4,7 @@
         "module": "amd",
         "sourceMap": false,
         "watch": false,
-        "outDir": "build",
+        "outDir": "out",
         "noEmitHelpers": true,
         "experimentalDecorators": true,
         "removeComments": true,

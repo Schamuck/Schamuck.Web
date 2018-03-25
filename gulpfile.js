@@ -10,8 +10,8 @@ var run = require('gulp-run');
 
 var paths = 
 {
-	bs: {basedir: './app'},
-	ts: {src: ['app/src/**/*.ts'],dest: ['app/build']},
+	bsync: {basedir: './app'},
+	ts: {src: ['app/src/**/*.ts'],dest: 'app/build'}, // dest/output is not an array
 	html: { src: ['app/**/*.html']}
 };
 
@@ -19,7 +19,7 @@ var paths =
 gulp.task('browser-sync', function() {
     browserSync.init(
     {
-        server: {baseDir: './app'}
+        server: {baseDir: paths.bsync.basedir}
 	});
 });
 gulp.task( "compile:tsc", function()
