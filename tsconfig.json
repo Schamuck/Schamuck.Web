@@ -1,0 +1,16 @@
+{
+    "compilerOptions": {
+        "target": "es6",
+        "module": "amd",
+        "sourceMap": false,
+        "watch": false,
+        "outDir": "build",
+        "noEmitHelpers": true,
+        "experimentalDecorators": true,
+        "removeComments": true,
+        "strictNullChecks": false,
+        "types": []
+    },
+    "compileOnSave": true,
+
+}
