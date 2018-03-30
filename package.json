@@ -26,9 +26,9 @@
   },
   "main": "gulpfile.js",
   "dependencies": {
+    "@types/knockout": "^3.4.53",
     "@types/requirejs": "^2.1.31",
-    "i": "^0.3.6",
-    "tiny-lr": "^1.1.1"
+    "i": "^0.3.6"
   },
   "scripts": {
     "upgrade": "npm prune && npm update && npm install"

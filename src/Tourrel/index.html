@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src ="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="crossorigin="anonymous"></script> 
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  
+  <script src="ViewModel.js"></script>
+</head>
+<h2>Your Tour Expense Calculator</h2>
+<body class="default">  
+<table class="table">
+    <thead><tr>
+        <th>Name</th>
+        <th>Contribution</th>
+        <th>Difference Against Total</th>
+        <th></th>
+    </tr></thead>
+    <tbody data-bind="foreach: personInstances">
+        <tr>
+            <td><input data-bind="value: name" /></td>
+            <!-- <td><select data-bind="options: $root.availableMeals, value: meal, optionsText: 'mealName'"></select></td> -->
+            <td><input data-bind="value: contribution() " /></td>
+            <td></td>
+            <td><a href="#" data-bind="click: $root.removePerson">Remove</a></td>
+
+        </tr>    
+    </tbody>
+</table>
+
+<button data-bind="click: addPerson">Add another Person</button>
+
+<h3 data-bind="visible: totalCost() > 0">
+    Total Expense: $<span data-bind="text: totalCost().toFixed(2)"></span>
+    Per head payable : $<span data-bind="text: headAverage().toFixed(2)"></span>
+</h3>
+</body>
+</html>
