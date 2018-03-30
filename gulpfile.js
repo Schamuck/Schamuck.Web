@@ -10,9 +10,9 @@ var run = require('gulp-run');
 
 var paths = 
 {
-	bsync: {basedir: './app'},
-	ts: {src: ['app/src/**/*.ts'],dest: 'app/build'}, // dest/output is not an array
-	html: { src: ['app/**/*.html']}
+	bsync: {basedir: './app/Tourrel'},
+	ts: {src: ['src/**/*.ts'],dest: 'app'}, // dest/output is not an array
+	html: { src: ['src/**/*.html'],dest:"app"}
 };
 
 /* Prepare Browser-sync for localhost */
@@ -22,23 +22,28 @@ gulp.task('browser-sync', function() {
         server: {baseDir: paths.bsync.basedir}
 	});
 });
+
 gulp.task( "compile:tsc", function()
 {
     var tsProject = typescript.createProject("tsconfig.json");
     var result = gulp.src(paths.ts.src).pipe( tsProject() );
     return result.js.pipe( gulp.dest( paths.ts.dest ) );
 } );
+gulp.task( "copy:html", function()
+{
+    return gulp.src( paths.html.src).pipe( gulp.dest( paths.html.dest) );
+} );
 
 gulp.task("build:clean", function () 
 {
-    return del(["./out/*"]);
+    return del(["./app/*"]);
 });
 gulp.task("serve", ['browser-sync'], function () 
 {
-    gulp.watch(paths.html.src).on('change', browserSync.reload);
+    gulp.watch(paths.html.src,["copy:html"]).on('change', browserSync.reload);
     gulp.watch(paths.ts.src, ["compile:tsc"]).on('change', browserSync.reload);
 });
 
-gulp.task('git:pull', shell.task(['git pull']));
-gulp.task('git:push', shell.task([ 'git push']));
+// gulp.task('git:pull', shell.task(['git pull']));
+// gulp.task('git:push', shell.task([ 'git push']));
 
