@@ -22,8 +22,8 @@
     <tbody data-bind="foreach: personInstances">
         <tr>
             <td><input data-bind="value: name" /></td>
-            <!-- <td><select data-bind="options: $root.availableMeals, value: meal, optionsText: 'mealName'"></select></td> -->
-            <td><input data-bind="value: contribution() " /></td>
+            <td><input data-bind="value:contribution(), event :{ change: $root.totalCost} " /></td>
+                                         
             <td></td>
             <td><a href="#" data-bind="click: $root.removePerson">Remove</a></td>
 
