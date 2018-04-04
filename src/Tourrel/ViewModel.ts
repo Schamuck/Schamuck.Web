@@ -24,7 +24,7 @@ class ViewModel
         this.calcBalance();
     }
    
-   public av =0;
+    public av =0;
     public calculate():void
     {
         let total = 0
@@ -39,6 +39,7 @@ class ViewModel
             this.av = av;
         }
     }
+
     public calcBalance():void
     {
         let total = 0
@@ -47,7 +48,7 @@ class ViewModel
         {
             let iCont = parseFloat( this.glob.instances()[i].cont());
             
-            let bal = (this.av-iCont).toFixed(2);
+            let bal = "$ "+(this.av-iCont).toFixed(2);
             this.glob.instances()[i].balance(bal);
         }
     }
