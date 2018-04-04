@@ -8,22 +8,22 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   
-  <script src="Tourrel.js"></script>
+  <script src="ViewModel.js"></script>
 </head>
-<h2>Your Tour Expense Calculator</h2>
+<h2>Tourrel</h2>
 <body class="default">  
 <table class="table">
     <thead><tr>
         <th>Name</th>
         <th>Contribution</th>
-        <th>Difference Against Total</th>
+        <th>Balance</th>
         <th></th>
     </tr></thead>
     <tbody data-bind="foreach: glob.instances">
         <tr>
             <td><input data-bind="value: name" /></td>
             <td><input data-bind="value:cont " /></td>
-            <td></td>
+            <td><span data-bind="text: balance "></span></td>
             <td><a href="#" data-bind="click: $root.removePerson">Remove</a></td>
 
         </tr>    
@@ -33,7 +33,7 @@
 <button data-bind="click: addPerson">Add another Person</button>
 
 <h3 >
-    Total Expense: $<span data-bind="text: glob.totalCost()"></span>
+    Total Expense: $<span data-bind="text: glob.totalCost()"></span></br>
     Per head payable : $<span data-bind="text: glob.headAverage()"></span>
 </h3>
 </body>
