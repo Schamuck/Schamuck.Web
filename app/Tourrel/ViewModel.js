@@ -37,7 +37,7 @@ class ViewModel {
         let count = this.glob.instances().length;
         for (var i = 0; i < count; i++) {
             let iCont = parseFloat(this.glob.instances()[i].cont());
-            let bal = (this.av - iCont).toFixed(2);
+            let bal = "$ " + (this.av - iCont).toFixed(2);
             this.glob.instances()[i].balance(bal);
         }
     }
