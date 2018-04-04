@@ -1,72 +1,56 @@
 /// <reference path="../../typings/typings.d.ts"/>
-
-
 window.onload = function() 
 {
-    let vm = new TourrelViewModel();
-    vm.cal = function(){
-        alert("sfjlsj")
-    };
+    let vm = new ViewModel();
     ko.applyBindings(vm);
 }
-
-function person(name, amount) 
+class ViewModel
 {
-    var self = this;
-    self.name = name;
-    self.contribution = ko.observable(amount);
-    self.contribution.subscribe(function(){
-        console.log("event fired");
-    });
-    //_this.resources.revenue.subscribe(_this.onValueChange.bind(_this));
-}
-
-
-// Overall viewmodel for this screen, along with initial state
-function TourrelViewModel() 
-{
-    var self = this;  
-
-    self.expenses = [33,56];
-    // Editable data
-    self.personInstances = ko.observableArray([
-        new person("person1", self.expenses[0]),
-        new person("person2", self.expenses[1])
-    ]);
-
-    // Computed data
-    self.totalCost = ko.computed(function() 
-    {
-       var total = 0;
-       for (var i = 0; i < self.personInstances().length; i++)
-           total += self.personInstances()[i].contribution();
-       return total;
-    });    
-    
-    self.headAverage = ko.computed(function() 
-    {
-        return self.totalCost()/self.personInstances().length; ;
-    });
-
-    // Operations
-    self.addPerson = function() 
-    {
-        self.personInstances.push(new person("", 0));
-
+    public glob = {
+        instances : ko.observableArray<any>(),
+        totalCost : ko.observable(0),
+        headAverage: ko.observable(0),
+        
     }
-    self.removePerson = function(seat) { self.personInstances.remove(seat) }
+    private addPerson():void
+    {   // glob to be passed as the Person class doesn't have the instances updated, also for while remove Person class needs it
+        this.glob.instances.push(new Person(this.glob,"",""));
+        this.glob.instances.valueHasMutated();
+    }
+    private removePerson(person):void
+    {
+        this.glob.instances.remove(person);
+        this.calculate();
+    }
+    public calculate():void
+    {
+        let total = 0;
+        let count =this.glob.instances().length;
+        for (var i = 0; i < count; i++)
+        {
+            total += parseFloat( this.glob.instances()[i].cont());
+            this.glob.totalCost(total);
+            this.glob.headAverage(total/count);
+        }
+    }
 }
 
+class Person extends ViewModel
+{  
+    public name:string;
+    public cont = ko.observable();
 
+    constructor(glob,name,amount)
+    {
+        super();
+        this.name = name;
+         this.cont(amount);
+        this.glob =glob;
+        this.cont.subscribe(this.onChaneContirbution.bind(this));
+    }
 
-
-
-
-
-   
-
-
-
-
-
-
+    private onChaneContirbution():void
+    {
+        this.calculate();
+    }
+}
