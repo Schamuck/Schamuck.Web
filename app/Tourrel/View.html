@@ -22,7 +22,7 @@
     <tbody data-bind="foreach: glob.instances">
         <tr>
             <td><input data-bind="value: name" /></td>
-            <td><input data-bind="value:cont " /></td>
+                     <td><input data-bind="value: contribution() " /></td>
             <td></td>
             <td><a href="#" data-bind="click: $root.removePerson">Remove</a></td>
 
@@ -32,9 +32,9 @@
 
 <button data-bind="click: addPerson">Add another Person</button>
 
-<h3 >
-    Total Expense: $<span data-bind="text: glob.totalCost()"></span>
-    Per head payable : $<span data-bind="text: glob.headAverage()"></span>
+<h3 data-bind="visible: glob.totalCost() > 0">
+    Total Expense: $<span data-bind="text: glob.totalCost().toFixed(2)"></span>
+    Per head payable : $<span data-bind="text: headAverage().toFixed(2)"></span>
 </h3>
 </body>
 </html>

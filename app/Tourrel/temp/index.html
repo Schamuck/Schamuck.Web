@@ -8,7 +8,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   
-  <script src="Tourrel.js"></script>
+  <script src="ViewModel.js"></script>
 </head>
 <h2>Your Tour Expense Calculator</h2>
 <body class="default">  
@@ -19,10 +19,11 @@
         <th>Difference Against Total</th>
         <th></th>
     </tr></thead>
-    <tbody data-bind="foreach: glob.instances">
+    <tbody data-bind="foreach: personInstances">
         <tr>
             <td><input data-bind="value: name" /></td>
-            <td><input data-bind="value:cont " /></td>
+            <!-- <td><select data-bind="options: $root.availableMeals, value: meal, optionsText: 'mealName'"></select></td> -->
+            <td><input data-bind="value: contribution() " /></td>
             <td></td>
             <td><a href="#" data-bind="click: $root.removePerson">Remove</a></td>
 
@@ -32,9 +33,9 @@
 
 <button data-bind="click: addPerson">Add another Person</button>
 
-<h3 >
-    Total Expense: $<span data-bind="text: glob.totalCost()"></span>
-    Per head payable : $<span data-bind="text: glob.headAverage()"></span>
+<h3 data-bind="visible: totalCost() > 0">
+    Total Expense: $<span data-bind="text: totalCost().toFixed(2)"></span>
+    Per head payable : $<span data-bind="text: headAverage().toFixed(2)"></span>
 </h3>
 </body>
 </html>
