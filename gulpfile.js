@@ -10,7 +10,7 @@ var run = require('gulp-run');
 
 var paths = 
 {
-	bsync: {basedir: './app/Tourrel'},
+	bsync: {basedir: './app/LiveTracker'},
 	ts: {src: ['src/**/*.ts'],dest: 'app'}, // dest/output is not an array
 	html: { src: ['src/**/*.html'],dest:"app"}
 };
